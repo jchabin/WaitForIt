@@ -19,44 +19,46 @@
 				}
 			</style>
 			<script>
-				var xv=Math.random()>0.5?-1:1,
-					yv=Math.random()>0.5?-1:1,
-					dvd=document.getElementById("dvd"),
-					body=document.getElementsByTagName("body")[0],
-					x=Math.random()*(body.clientWidth-dvd.clientWidth),
-					y=Math.random()*(body.clientHeight-dvd.clientHeight);
-				const SPEED=2;
-				function color(){
-					dvd.style.filter="hue-rotate("+Math.random()*360+"deg)";
-				}
-				function render(){
-					dvd.style.left=x+"px";
-					dvd.style.top=y+"px";
-					x+=xv*SPEED;
-					y+=yv*SPEED;
-					if(x<0){
-						xv*=-1;
-						x=0;
-						color();
+			window.onload=function(){
+					var xv=Math.random()>0.5?-1:1,
+						yv=Math.random()>0.5?-1:1,
+						dvd=document.getElementById("dvd"),
+						body=document.getElementsByTagName("body")[0],
+						x=Math.random()*(body.clientWidth-dvd.clientWidth),
+						y=Math.random()*(body.clientHeight-dvd.clientHeight);
+					const SPEED=2;
+					function color(){
+						dvd.style.filter="hue-rotate("+Math.random()*360+"deg)";
 					}
-					if(y<0){
-						yv*=-1;
-						y=0;
-						color();
-					}
-					if(x>body.clientWidth-dvd.clientWidth){
-						xv*=-1;
-						x=body.clientWidth-dvd.clientWidth;
-						color();
-					}
-					if(y>body.clientHeight-dvd.clientHeight){
-						yv*=-1;
-						y=body.clientHeight-dvd.clientHeight;
-						color();
+					function render(){
+						dvd.style.left=x+"px";
+						dvd.style.top=y+"px";
+						x+=xv*SPEED;
+						y+=yv*SPEED;
+						if(x<0){
+							xv*=-1;
+							x=0;
+							color();
+						}
+						if(y<0){
+							yv*=-1;
+							y=0;
+							color();
+						}
+						if(x>body.clientWidth-dvd.clientWidth){
+							xv*=-1;
+							x=body.clientWidth-dvd.clientWidth;
+							color();
+						}
+						if(y>body.clientHeight-dvd.clientHeight){
+							yv*=-1;
+							y=body.clientHeight-dvd.clientHeight;
+							color();
+						}
+						window.requestAnimationFrame(render);
 					}
 					window.requestAnimationFrame(render);
 				}
-				window.requestAnimationFrame(render);
 			</script>
 		</head>
 		<body>
