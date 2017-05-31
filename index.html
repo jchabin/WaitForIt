@@ -26,11 +26,12 @@
 						body=document.getElementsByTagName("body")[0],
 						x=Math.random()*(body.clientWidth-dvd.clientWidth),
 						y=Math.random()*(body.clientHeight-dvd.clientHeight);
-					const SPEED=2;
+					var SPEED=dvd.clientHeight/100;;
 					function color(){
 						dvd.style.filter="hue-rotate("+Math.random()*360+"deg)";
 					}
 					function render(){
+						SPEED=dvd.clientHeight/100;
 						dvd.style.left=x+"px";
 						dvd.style.top=y+"px";
 						x+=xv*SPEED;
